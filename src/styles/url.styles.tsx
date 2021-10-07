@@ -5,12 +5,18 @@ export const Wrapper = styled.section`
   top: 50%;
   left: 50%;
   display: flex;
+  /* flex-direction: column; */
   transform: translate(-50%, -50%);
   /* padding: 2rem; */
   background-color: white;
   width: 70%;
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgb(0 0 0 / 6%);
+`;
+
+export const URLWrapper = styled.section`
+  width: 100%;
+  display: flex;
 `;
 
 export const UrlInput = styled.input`
@@ -47,4 +53,13 @@ export const ShortenLinkButton = styled.button`
   :hover {
     background-color: #ff007730;
   }
+`;
+
+export const ErrorMessage = styled.p`
+  display: block;
+  color: #ff0076;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 700;
+  padding: 0 1rem;
 `;
