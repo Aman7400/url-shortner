@@ -10,12 +10,16 @@ export const Wrapper = styled.section`
   cursor: pointer;
 `;
 
+export const CopiedTextMessage = styled.p`
+  color: #ff0076;
+`;
+
 export const ShortUrlText = styled.p`
   color: #ff0076;
   margin-right: 0.5rem;
 `;
 
-export const CopyToClip = styled.span`
+export const CopyToClipWrapper = styled.span`
   font-size: 2rem;
   transition: all 150ms ease-in-out;
   :hover {
