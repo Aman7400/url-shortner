@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Bottom from "./components/Bottom";
+import Top from "./components/Top";
+import Url from "./components/Url";
+import { Container } from "./styles/app.styles";
 
-function App() {
+export const ShortUrlContext = React.createContext("");
+
+const App: React.FC = () => {
+  const [shortUrl, setShotUrl] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact>
+          <ShortUrlContext.Provider value={shortUrl}>
+            <Container>
+              {/* Top */}
+              <Top />
+              {/* Url  */}
+              <Url setShortUrl={setShotUrl} />
+              {/* Bottom */}
+              <Bottom />
+            </Container>
+          </ShortUrlContext.Provider>
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
