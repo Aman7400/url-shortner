@@ -1,23 +1,15 @@
 import React, { FC, useState } from "react";
-import {
-  ErrorMessage,
-  ShortenLinkButton,
-  UrlInput,
-  Wrapper,
-  URLWrapper,
-} from "../styles/url.styles";
+import { ShortenLinkButton, UrlInput, Wrapper } from "../styles/url.styles";
 import {
   uniqueNamesGenerator,
   Config,
   adjectives,
-  colors,
   animals,
   NumberDictionary,
   starWars,
 } from "unique-names-generator";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../utils/firebase.utils";
 import isURl from "validator/lib/isURL";
+import axios from "axios";
 interface UrlProps {
   setShortUrl(shortUrl: string): void;
 }
@@ -33,40 +25,38 @@ const customConfig: Config = {
 const Url: FC<UrlProps> = ({ setShortUrl }) => {
   // Set Url
   const [url, setUrl] = useState("");
-  // Set Error
-  const [error, setError] = useState(false);
-
   // Set Url When Enter Key is Pressed
   function enterKeyPress(e: React.KeyboardEvent) {
     if (e.code === "Enter") {
       createShortUrl();
     }
   }
-
+  // Create Short Link
   async function createShortUrl() {
     if (!isURl(url)) {
       setShortUrl(`Url is invalid`);
-      // setError(true);
       return;
     }
     const sUrl = uniqueNamesGenerator(customConfig);
     try {
-      const docRef = await addDoc(collection(db, "short-links"), {
+      // console.log("url", process.env.BACKEND_URL);
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/add`, {
         url,
         sUrl,
       });
-      console.log("Url Added at:", docRef);
+      if (res.status === 200) {
+        setShortUrl(`http://localhost:3000/short-ly/${sUrl}`);
+        setUrl("");
+      } else {
+        throw new Error("Something went wrong");
+      }
     } catch (error) {
       console.log("Error", error);
     }
-    setShortUrl(`http://short-ly/${sUrl}`);
-    setUrl("");
   }
 
   return (
     <Wrapper>
-      {error && <ErrorMessage>URl is invalid</ErrorMessage>}
-
       <UrlInput
         placeholder="Type your Url here ..."
         onChange={(e) => setUrl(e.target.value)}

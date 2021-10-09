@@ -12,11 +12,10 @@ export const Wrapper = styled.section`
   width: 70%;
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgb(0 0 0 / 6%);
-`;
-
-export const URLWrapper = styled.section`
-  width: 100%;
-  display: flex;
+  @media (max-width: 780px) {
+    width: 95%;
+    flex-direction: column;
+  }
 `;
 
 export const UrlInput = styled.input`
@@ -25,7 +24,13 @@ export const UrlInput = styled.input`
   background: transparent;
   outline: none;
   width: 80%;
+  @media (max-width: 780px) {
+    width: 100%;
+  }
   font-size: 1.5rem;
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
   font-family: inherit;
   color: #ff0076;
 
@@ -38,6 +43,10 @@ export const ShortenLinkButton = styled.button`
   padding: 2rem 1rem;
   width: 20%;
   font-family: inherit;
+
+  @media (max-width: 780px) {
+    width: 100%;
+  }
 
   border: none;
   outline: none;

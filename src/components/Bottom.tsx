@@ -1,6 +1,5 @@
 import React from "react";
 import { Info, Wrapper } from "../styles/bottom.styles";
-import { Link } from "react-router-dom";
 import { FaReact } from "react-icons/fa";
 import ShortUrl from "./ShortUrl";
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Bottom from "./components/Bottom";
+import NavigatorPage from "./components/NavigatorPage";
 import Top from "./components/Top";
 import Url from "./components/Url";
 import { Container } from "./styles/app.styles";
@@ -12,6 +13,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
+        {/* Generate Link */}
         <Route path="/" exact>
           <ShortUrlContext.Provider value={shortUrl}>
             <Container>
@@ -23,6 +25,10 @@ const App: React.FC = () => {
               <Bottom />
             </Container>
           </ShortUrlContext.Provider>
+        </Route>
+        {/* Navigate Link */}
+        <Route path="/short-ly/:sUrl">
+          <NavigatorPage />
         </Route>
       </Switch>
     </BrowserRouter>
