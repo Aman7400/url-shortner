@@ -28,6 +28,7 @@ const NavigatorPage = () => {
       window.location.replace(`https://${res.data.url}`);
     } catch (error) {
       console.log(error);
+      window.location.replace("/404");
     }
   };
 

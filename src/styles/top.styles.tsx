@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const Wrapper = styled.section`
   height: 50vh;
-  background-color: #ff0076;
-  background-color: #ff0076;
-  background-image: linear-gradient(90deg, #ff0076 0%, #fbab7e 100%);
+
+  /* background-color: #ff0076; */
+  /* background-image: linear-gradient(90deg, #ff0076 0%, #fbab7e 100%); */
+  background-image: url("/images/bg.png");
+  background-size: cover;
 `;
 
 export const Heading = styled.h1`

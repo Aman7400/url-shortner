@@ -4,6 +4,8 @@ import Bottom from "./components/Bottom";
 import NavigatorPage from "./components/NavigatorPage";
 import Top from "./components/Top";
 import Url from "./components/Url";
+import PageNotFound from "./pages/PageNotFound";
+
 import { Container } from "./styles/app.styles";
 
 export const ShortUrlContext = React.createContext("");
@@ -29,6 +31,10 @@ const App: React.FC = () => {
         {/* Navigate Link */}
         <Route path="/short-ly/:sUrl">
           <NavigatorPage />
+        </Route>
+        {/* 404  */}
+        <Route path="*">
+          <PageNotFound />
         </Route>
       </Switch>
     </BrowserRouter>
