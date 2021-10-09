@@ -53,15 +53,15 @@ export const ShortenLinkButton = styled.button`
   cursor: pointer;
   display: block;
   background: transparent;
-  color: #ff0076;
+  /* color: #ff0076; */
   font-weight: 700;
   font-size: 1rem;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: all 350ms ease-in-out;
-  :hover {
-    background-color: #ff007730;
-  }
+  background-image: linear-gradient(90deg, #ff0076 0%, #fbab7e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const ErrorMessage = styled.p`
